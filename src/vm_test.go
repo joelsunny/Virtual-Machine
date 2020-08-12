@@ -5,13 +5,12 @@ import (
 	"testing"
 )
 
-// TestAdd add instruction
-func TestRun(t *testing.T) {
-	v := VM{}
-	p := []Instruction{Instruction{Opcode: ld, A0: R0, A1: 103}}
-	v.Run(p)
-	fmt.Println(v)
-	if v.R[R0] != 103 {
-		t.Errorf("Expected result to be %d but instead got %d!", 103, v.R[R0])
+// TestStackPush checks the stack push functionality
+func TestStackPush(t *testing.T) {
+	v := NewVM()
+	v.push(1)
+	fmt.Println(v.cpu)
+	if v.cpu.sp != MEMSIZE-2 {
+		t.Errorf("Expected result to be %d but instead got %d!", MEMSIZE-2, v.cpu.sp)
 	}
 }

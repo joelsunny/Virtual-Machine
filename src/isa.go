@@ -1,26 +1,27 @@
 package main
 
-/*
-Instruction Set
-*/
+// OpCode s are represented as 32 bit in memory
+type OpCode = int32
+
 const (
-	ld = Register(iota)
-	add
+	iadd OpCode = iota
+	isub
+	imul
+	ilt
+	ieq
+	br
+	brt
+	brf
+	iconst
+	load
+	gload
+	store
+	gstore
+	print
+	pop
+	halt
 )
 
-func (v *VM) step(instr Instruction) {
-	op := instr.Opcode
-	switch op {
-	case ld:
-		v.ld(instr.A0, instr.A1)
-	}
-}
+func (v *VM) iadd() {
 
-// Load : ld Reg Value
-func (v *VM) ld(r int, val Register) {
-	v.R[r] = val
-}
-
-func (v *VM) add(r0 int, r1 int, r2 int) {
-	v.R[r2] = v.R[r0] + v.R[r1]
 }

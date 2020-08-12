@@ -1,7 +1,3 @@
-# About
-Toy implementation of a stack based virtual machine.
-The ISA and VM architecture is inspired from [this](https://youtu.be/OjaAToVkoTw) talk by Terrence Parr
-
 # Instruction Set Architecture
 
 opcode | instr  |  op1 |  op2 | description  |
@@ -24,3 +20,8 @@ opcode | instr  |  op1 |  op2 | description  |
 | | call  | addr  | numArgs  |   |
 | |ret   |   |   |   |
 | |halt   |   |   |   |
+
+
+# Reference
+
+The ISA and VM architecture is inspired from [this](https://youtu.be/OjaAToVkoTw) talk by Terrence Parr
