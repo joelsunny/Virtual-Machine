@@ -1,5 +1,11 @@
 package main
 
+// prog: instructionlist
+//		instructionlist: instruction [\ninstruction]*
+//  		instruction: label | normalinstruction
+//				label: name':'
+//				normalinstruction: name | name num | name num num
+
 // import (
 // 	"bufio"
 // 	"fmt"
