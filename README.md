@@ -1,6 +1,30 @@
 # About
 Toy implementation of a stack based virtual machine.
 The ISA and VM architecture is inspired from [this](https://youtu.be/OjaAToVkoTw) talk by Terrence Parr
+# Machine Architecture
+```
+                               +-----------------------------------------------+
+                               |                                               |
+                               |                                               |
+                               |                                               |
+                               |     +------------+                            |
++------------+                 |     |  fetch     |             registers      |
+|   code     |                 |     +-----+------+                            |
++------------+ <-------------> |           |                  +-----------+    |
+|            |                 |           v                  |    sp     |    |
+|            |  ^              |     +-----+------+           +-----------+    |
+|            |  |              |     |  decode    |           |    fp     |    |
+|            |  |              |     +-----+------+           +-----------+    |
++------------+  | stack        |           |                  |    ip     |    |
+|--|stack|---|  |              |           v                  +-----------+    |
++------------+  +              |     +-----+------+                            |
+                               |     |  execute   |                            |
+                               |     +------------+                            |
+                               |                                               |
+                               |                                               |
+                               +-----------------------------------------------+
+
+```
 
 # Instruction Set Architecture
 
@@ -12,8 +36,8 @@ opcode | instr  |  op1 |  op2 | description  |
 | 3|ilt   |   |   | integer less than  |
 | 4|ieq  |   |   |   |
 | 5|br   | addr  |   | branch to addr  |
-| 6|brt   | addr  |   | branch if true  |
-| 7|brf   |   |   |   |
+| 6|brt   | addr  |   | branch if true, addr relative to instruction pointer  |
+| 7|brf   | addr  |   |   |
 | 8|iconst   |value   |   |push integer const to stack   |
 | 9|load   | addr  |   |  load local variable @`addr` relative to the frame pointer |
 | 10|gload   |addr   |   |   |
