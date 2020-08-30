@@ -1,16 +1,17 @@
 package main
 
-// import (
-// 	"testing"
-// )
+import (
+	"fmt"
+	"testing"
+)
 
-// // TestAssembler implementation
-// func TestAssembler(t *testing.T) {
-// 	path := "./tests/code.asm"
-// 	p := assembler(path)
-// 	v := VM{}
-// 	v.Run(p)
-// 	if v.R[R2] != 3 {
-// 		t.Errorf("Expected result to be %d but instead got %d!", 3, v.R[R2])
-// 	}
-// }
+// TestAssembler implementation
+func TestAssembler(t *testing.T) {
+	path := "./tests/code.asm"
+	p := assembler(path)
+
+	fmt.Println(p)
+	v := NewVM()
+	v.loadProgram(p.prog, p.entry)
+	v.run()
+}

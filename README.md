@@ -87,7 +87,7 @@ v.loadProgram(program, 16) // 16 is the address of the first instruction to be e
 |---|------|---|
 |   |   :   | previous contents/frame  |
 |   |  args  |  arguments to the function |
-|   |  nargs  | number of argument  |
+|   |  nargs  | number of arguments  |
 |   |  ip    |  return address |
 |   |  fp  |  previous frame pointer |
 |   |  local|  local variables to the function |
