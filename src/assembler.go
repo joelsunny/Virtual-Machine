@@ -67,6 +67,11 @@ type Program struct {
 	entry Word
 }
 
+func iscomment(s string) bool {
+	r, _ := regexp.Compile("#.*")
+	return r.MatchString(s)
+}
+
 func islabel(s string) bool {
 	r, _ := regexp.Compile("[a-zA-Z]+:")
 	return r.MatchString(s)
@@ -106,7 +111,9 @@ func assembler(path string) Program {
 		split := strings.Split(l, " ")
 
 		for _, tok := range split {
-			if islabel(tok) {
+			if iscomment(tok) {
+				break
+			} else if islabel(tok) {
 				// add to symbol table
 				label := tok[0 : len(tok)-1]
 				if insideFunc {

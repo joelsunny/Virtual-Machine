@@ -1,3 +1,4 @@
+# function for finding maximum of two numbers
 proc max:
 load 5
 load 4
@@ -13,6 +14,6 @@ end
 
 iconst 13
 iconst 19
-call max 2
+call max 2 # max label will be replaced by assembler
 print
 halt
